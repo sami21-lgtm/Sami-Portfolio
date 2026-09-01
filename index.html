@@ -11,12 +11,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
-    <!-- Animated Background -->
+    <!-- Animated Background & Canvas -->
     <div class="bg-animation">
         <div class="gradient-orb orb-1"></div>
         <div class="gradient-orb orb-2"></div>
         <div class="gradient-orb orb-3"></div>
     </div>
+    <canvas id="particles-canvas"></canvas>
     <div class="bg-grain"></div>
 
     <!-- Navigation -->
@@ -28,9 +29,11 @@
             <ul class="nav-links" id="navLinks">
                 <li><a href="#home" class="nav-link active">Home</a></li>
                 <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
                 <li><a href="#skills" class="nav-link">Skills</a></li>
                 <li><a href="#projects" class="nav-link">Projects</a></li>
                 <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#cp" class="nav-link">CP</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
             <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
@@ -47,7 +50,7 @@
             <div class="hero-content">
                 <div class="hero-badge">
                     <span class="badge-dot"></span>
-                    Available for Freelance
+                    Available for Freelance &amp; Roles
                 </div>
                 <h1 class="hero-title">
                     <span class="hero-greeting">Hello, I'm</span>
@@ -68,24 +71,28 @@
                         <span>View My Work</span>
                         <i class="fas fa-arrow-right"></i>
                     </a>
-                    <a href="#contact" class="btn btn-outline">
-                        <span>Let's Talk</span>
-                        <i class="fas fa-envelope"></i>
+                    <a href="EMTIAZ_HOSSAINSAMI_CV.pdf" download target="_blank" class="btn btn-outline">
+                        <span>Download CV</span>
+                        <i class="fas fa-download"></i>
+                    </a>
+                    <a href="https://wa.me/8801998453990" target="_blank" class="btn btn-whatsapp">
+                        <span>WhatsApp</span>
+                        <i class="fab fa-whatsapp"></i>
                     </a>
                 </div>
                 <div class="hero-stats">
                     <div class="stat-item">
-                        <span class="stat-number" data-target="157">0</span><span class="stat-plus">+</span>
+                        <span class="stat-number" data-target="171">0</span><span class="stat-plus">+</span>
                         <span class="stat-label">Problems Solved</span>
                     </div>
                     <div class="stat-divider"></div>
                     <div class="stat-item">
-                        <span class="stat-number" data-target="10">0</span><span class="stat-plus">+</span>
+                        <span class="stat-number" data-target="111">0</span><span class="stat-plus">+</span>
                         <span class="stat-label">Projects Built</span>
                     </div>
                     <div class="stat-divider"></div>
                     <div class="stat-item">
-                        <span class="stat-number" data-target="5">0</span><span class="stat-plus">+</span>
+                        <span class="stat-number" data-target="30">0</span><span class="stat-plus">+</span>
                         <span class="stat-label">Services</span>
                     </div>
                 </div>
@@ -94,7 +101,7 @@
                 <div class="image-wrapper">
                     <div class="image-glow"></div>
                     <div class="image-ring"></div>
-                    <img src="assets/profile.jpg" alt="MD. Emtiaz Hossain Sami" class="profile-img">
+                    <img src="profile.jpg" alt="MD. Emtiaz Hossain Sami" class="profile-img">
                 </div>
                 <div class="floating-card card-1 glass-card">
                     <i class="fas fa-code"></i>
@@ -129,7 +136,7 @@
             <div class="about-grid">
                 <div class="about-image-col">
                     <div class="about-image glass-card-solid">
-                        <img src="assets/profile.jpg" alt="Sami">
+                        <img src="profile.jpg" alt="Sami">
                         <div class="experience-badge glass-card">
                             <span class="exp-icon"><i class="fas fa-graduation-cap"></i></span>
                             <span class="exp-text">DIU — Software Engineering</span>
@@ -146,12 +153,7 @@
                         <p>
                             As a front-end developer, I specialize in <em>Glassmorphism design</em> and 
                             responsive web interfaces. Beyond the screen, I am an active competitive programmer 
-                            on Codeforces and a robotics enthusiast, having successfully developed hardware 
-                            prototypes like a <strong>Human Following Robot</strong>.
-                        </p>
-                        <p>
-                            I balance my technical pursuits with a commitment to fitness and bodybuilding, 
-                            always striving for growth in both code and life.
+                            and a robotics enthusiast, having successfully developed hardware prototypes like a <strong>Human Following Robot</strong>.
                         </p>
                     </div>
                     <div class="about-info-grid">
@@ -184,17 +186,58 @@
                             </div>
                         </div>
                     </div>
-                    <a href="https://www.linkedin.com/in/emtiaz-hossain-6b4416340/" target="_blank" class="btn btn-primary">
-                        <span>View LinkedIn</span>
-                        <i class="fab fa-linkedin"></i>
-                    </a>
+                    <div class="about-buttons">
+                        <a href="EMTIAZ_HOSSAINSAMI_CV.pdf" download target="_blank" class="btn btn-primary">
+                            <span>Download CV</span>
+                            <i class="fas fa-download"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/emtiaz-hossain-6b4416340/" target="_blank" class="btn btn-outline">
+                            <span>LinkedIn</span>
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="section section-alt" id="experience">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Career Journey</span>
+                <h2 class="section-title">Work <span class="highlight">Experience</span></h2>
+                <p class="section-subtitle">My professional internships and practical field experience</p>
+            </div>
+            <div class="experience-grid">
+                <div class="experience-card glass-card">
+                    <div class="exp-card-header">
+                        <div class="exp-role-icon"><i class="fas fa-chart-line"></i></div>
+                        <div>
+                            <h3 class="exp-title">Data Analyst (Intern)</h3>
+                            <span class="exp-company"><i class="fas fa-building"></i> Bluestock Fintech (bluestock.in)</span>
+                        </div>
+                    </div>
+                    <p class="exp-description">Performed data analysis, data visualization, and analytical reporting to deliver key actionable insights and metrics.</p>
+                    <div class="project-tags"><span>Data Analysis</span><span>Python</span><span>Excel</span><span>Visualization</span></div>
+                </div>
+                <div class="experience-card glass-card">
+                    <div class="exp-card-header">
+                        <div class="exp-role-icon"><i class="fas fa-laptop-code"></i></div>
+                        <div>
+                            <h3 class="exp-title">Web Developer (Intern)</h3>
+                            <span class="exp-company"><i class="fas fa-building"></i> AppUpNext</span>
+                        </div>
+                    </div>
+                    <p class="exp-description">Developed responsive web applications and interfaces, implemented clean UI/UX designs, and optimized web performance.</p>
+                    <div class="project-tags"><span>Web Development</span><span>HTML5</span><span>CSS3</span><span>JavaScript</span></div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Skills Section -->
-    <section class="section section-alt" id="skills">
+    <section class="section" id="skills">
         <div class="container">
             <div class="section-header">
                 <span class="section-tag">What I Know</span>
@@ -255,7 +298,7 @@
     </section>
 
     <!-- Projects Section -->
-    <section class="section" id="projects">
+    <section class="section section-alt" id="projects">
         <div class="container">
             <div class="section-header">
                 <span class="section-tag">My Recent Work</span>
@@ -269,6 +312,45 @@
                 <button class="filter-btn" data-filter="other">Other</button>
             </div>
             <div class="projects-grid">
+                <div class="project-card glass-card" data-category="web">
+                    <div class="project-image">
+                        <div class="project-placeholder"><i class="fas fa-utensils"></i></div>
+                        <div class="project-overlay">
+                            <a href="https://sami21-lgtm.github.io/Sami-s-restaurant/" target="_blank" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Sami's Restaurant</h3>
+                        <p>Interactive restaurant platform featuring live menu, online ordering, and booking system.</p>
+                        <div class="project-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+                    </div>
+                </div>
+                <div class="project-card glass-card" data-category="web">
+                    <div class="project-image">
+                        <div class="project-placeholder"><i class="fas fa-hospital"></i></div>
+                        <div class="project-overlay">
+                            <a href="https://sami21-lgtm.github.io/CarePulse-Specialized-Hospital/" target="_blank" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>CarePulse Specialized Hospital</h3>
+                        <p>Modern hospital management system with patient registration and appointment scheduling.</p>
+                        <div class="project-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+                    </div>
+                </div>
+                <div class="project-card glass-card" data-category="web">
+                    <div class="project-image">
+                        <div class="project-placeholder"><i class="fas fa-umbrella-beach"></i></div>
+                        <div class="project-overlay">
+                            <a href="https://sami21-lgtm.github.io/Family-Resort/" target="_blank" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Family Resort Website</h3>
+                        <p>Beautiful resort landing page with luxury suite showcase, booking form, and responsive UI.</p>
+                        <div class="project-tags"><span>HTML</span><span>CSS</span><span>Responsive</span></div>
+                    </div>
+                </div>
                 <div class="project-card glass-card" data-category="web">
                     <div class="project-image">
                         <div class="project-placeholder"><i class="fas fa-hotel"></i></div>
@@ -294,32 +376,6 @@
                         <h3>Hotel Management System</h3>
                         <p>Modern hotel platform with booking, room management, and guest services.</p>
                         <div class="project-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
-                    </div>
-                </div>
-                <div class="project-card glass-card" data-category="web">
-                    <div class="project-image">
-                        <div class="project-placeholder"><i class="fas fa-hospital"></i></div>
-                        <div class="project-overlay">
-                            <a href="https://sami21-lgtm.github.io/modern-hospital-management-system/" target="_blank" class="project-link"><i class="fas fa-external-link-alt"></i></a>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <h3>Hospital Management System</h3>
-                        <p>Modern hospital system with patient tracking and appointment scheduling.</p>
-                        <div class="project-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
-                    </div>
-                </div>
-                <div class="project-card glass-card" data-category="web">
-                    <div class="project-image">
-                        <div class="project-placeholder"><i class="fas fa-umbrella-beach"></i></div>
-                        <div class="project-overlay">
-                            <a href="https://sami21-lgtm.github.io/Family-Resort/" target="_blank" class="project-link"><i class="fas fa-external-link-alt"></i></a>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <h3>Family Resort Website</h3>
-                        <p>Beautiful resort landing page with modern UI and responsive design.</p>
-                        <div class="project-tags"><span>HTML</span><span>CSS</span><span>Responsive</span></div>
                     </div>
                 </div>
                 <div class="project-card glass-card" data-category="design">
@@ -379,7 +435,7 @@
     </section>
 
     <!-- Services Section -->
-    <section class="section section-alt" id="services">
+    <section class="section" id="services">
         <div class="container">
             <div class="section-header">
                 <span class="section-tag">What I Offer</span>
@@ -436,7 +492,7 @@
     </section>
 
     <!-- Competitive Programming Section -->
-    <section class="section" id="cp">
+    <section class="section section-alt" id="cp">
         <div class="container">
             <div class="section-header">
                 <span class="section-tag">Problem Solving</span>
@@ -444,32 +500,34 @@
                 <p class="section-subtitle">Active profiles on major competitive programming platforms</p>
             </div>
             <div class="cp-grid">
-                <div class="cp-card glass-card">
-                    <div class="cp-icon-fallback"><i class="fas fa-code"></i></div>
+                <div class="cp-card">
+                    <div class="cp-logo-box">
+                        <div class="cf-bars">
+                            <span class="cf-bar cf-bar-1"></span>
+                            <span class="cf-bar cf-bar-2"></span>
+                            <span class="cf-bar cf-bar-3"></span>
+                        </div>
+                    </div>
                     <h3>Codeforces</h3>
                     <p class="cp-handle">@samiemtiaz008</p>
-                    <div class="cp-stats">
-                        <div class="cp-stat">
-                            <span class="cp-stat-num">157+</span>
-                            <span class="cp-stat-label">Problems Solved</span>
-                        </div>
-                    </div>
-                    <a href="https://codeforces.com/profile/samiemtiaz008" target="_blank" class="btn btn-sm btn-outline">
-                        View Profile <i class="fas fa-external-link-alt"></i>
+                    <div class="cp-stat-val">171+</div>
+                    <p class="cp-stat-desc">Problems Solved</p>
+                    <a href="https://codeforces.com/profile/samiemtiaz008" target="_blank" class="cp-btn">
+                        <span>View Profile</span>
+                        <i class="fas fa-external-link-alt"></i>
                     </a>
                 </div>
-                <div class="cp-card glass-card">
-                    <div class="cp-icon-fallback"><i class="fas fa-terminal"></i></div>
+                <div class="cp-card">
+                    <div class="cp-logo-box">
+                        <div class="beecrowd-icon-box"></div>
+                    </div>
                     <h3>Beecrowd</h3>
                     <p class="cp-handle">Online Judge</p>
-                    <div class="cp-stats">
-                        <div class="cp-stat">
-                            <span class="cp-stat-num">Active</span>
-                            <span class="cp-stat-label">Contributor</span>
-                        </div>
-                    </div>
-                    <a href="https://judge.beecrowd.com/en/profile/1089506" target="_blank" class="btn btn-sm btn-outline">
-                        View Profile <i class="fas fa-external-link-alt"></i>
+                    <div class="cp-stat-val">Active</div>
+                    <p class="cp-stat-desc">Contributor</p>
+                    <a href="https://judge.beecrowd.com/en/profile/1089506" target="_blank" class="cp-btn">
+                        <span>View Profile</span>
+                        <i class="fas fa-external-link-alt"></i>
                     </a>
                 </div>
             </div>
@@ -477,7 +535,7 @@
     </section>
 
     <!-- Contact Section -->
-    <section class="section section-alt" id="contact">
+    <section class="section" id="contact">
         <div class="container">
             <div class="section-header">
                 <span class="section-tag">Get In Touch</span>
@@ -500,7 +558,7 @@
                             <div class="contact-item-icon"><i class="fab fa-whatsapp"></i></div>
                             <div>
                                 <span class="contact-item-label">WhatsApp</span>
-                                <a href="https://wa.me/8801998453990">01998453990</a>
+                                <a href="https://wa.me/8801998453990" target="_blank">01998453990</a>
                             </div>
                         </div>
                         <div class="contact-item glass-card">
@@ -561,6 +619,7 @@
                     <h4>Quick Links</h4>
                     <a href="#home">Home</a>
                     <a href="#about">About</a>
+                    <a href="#experience">Experience</a>
                     <a href="#skills">Skills</a>
                     <a href="#projects">Projects</a>
                     <a href="#contact">Contact</a>
@@ -571,8 +630,8 @@
                         <a href="https://www.linkedin.com/in/emtiaz-hossain-6b4416340/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                         <a href="https://github.com/sami21-lgtm" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
                         <a href="https://www.facebook.com/emtiaz.hossain.2478" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://wa.me/8801998453990" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
                         <a href="https://www.instagram.com/sami_e.m.t.i.a.z_008/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="https://x.com/008emtiazS" target="_blank" aria-label="X"><i class="fab fa-x-twitter"></i></a>
                     </div>
                 </div>
             </div>
