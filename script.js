@@ -1,10 +1,11 @@
 /* ============================
-   SUBTLE FLOATING DOTS
+   INTERACTIVE SPIDER-WEB PARTICLES
    ============================ */
 const canvas = document.getElementById('particles-canvas');
 if (canvas) {
     const ctx = canvas.getContext('2d');
     let particles = [];
+    let mouse = { x: null, y: null, radius: 150 };
 
     function resizeCanvas() {
         canvas.width = window.innerWidth;
@@ -14,45 +15,104 @@ if (canvas) {
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
 
+    // Track mouse movement
+    window.addEventListener('mousemove', (e) => {
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+    });
+
+    window.addEventListener('mouseleave', () => {
+        mouse.x = null;
+        mouse.y = null;
+    });
+
     class Particle {
         constructor() {
             this.x = Math.random() * canvas.width;
             this.y = Math.random() * canvas.height;
-            this.size = Math.random() * 1.8 + 0.3;
-            this.speedY = -(Math.random() * 0.3 + 0.05);
-            this.speedX = (Math.random() - 0.5) * 0.15;
-            this.opacity = Math.random() * 0.25 + 0.05;
-            this.fadeDir = Math.random() > 0.5 ? 1 : -1;
-            this.fadeSpeed = Math.random() * 0.003 + 0.001;
+            this.size = Math.random() * 2 + 1;
+            this.vx = (Math.random() - 0.5) * 0.8;
+            this.vy = (Math.random() - 0.5) * 0.8;
         }
 
         update() {
-            this.y += this.speedY;
-            this.x += this.speedX;
+            this.x += this.vx;
+            this.y += this.vy;
 
-            this.opacity += this.fadeDir * this.fadeSpeed;
-            if (this.opacity >= 0.3) this.fadeDir = -1;
-            if (this.opacity <= 0.03) this.fadeDir = 1;
+            // Bounce off edges
+            if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+            if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
 
-            if (this.y < -10) {
-                this.y = canvas.height + 10;
-                this.x = Math.random() * canvas.width;
+            // Interactive repulsion from cursor
+            if (mouse.x !== null && mouse.y !== null) {
+                let dx = mouse.x - this.x;
+                let dy = mouse.y - this.y;
+                let dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < mouse.radius) {
+                    let angle = Math.atan2(dy, dx);
+                    let force = (mouse.radius - dist) / mouse.radius;
+                    this.x -= Math.cos(angle) * force * 2;
+                    this.y -= Math.sin(angle) * force * 2;
+                }
             }
-            if (this.x < -10) this.x = canvas.width + 10;
-            if (this.x > canvas.width + 10) this.x = -10;
         }
 
         draw() {
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(140, 130, 255, ${this.opacity})`;
+            ctx.fillStyle = 'rgba(140, 130, 255, 0.7)';
             ctx.fill();
         }
     }
 
-    for (let i = 0; i < 50; i++) {
-        particles.push(new Particle());
+    function initParticles() {
+        particles = [];
+        // Calculate particle density based on screen size
+        const particleCount = Math.floor((canvas.width * canvas.height) / 11000);
+        for (let i = 0; i < particleCount; i++) {
+            particles.push(new Particle());
+        }
     }
+
+    function connectParticles() {
+        for (let a = 0; a < particles.length; a++) {
+            for (let b = a + 1; b < particles.length; b++) {
+                let dx = particles[a].x - particles[b].x;
+                let dy = particles[a].y - particles[b].y;
+                let dist = Math.sqrt(dx * dx + dy * dy);
+
+                // Draw spider-web connecting lines between close particles
+                if (dist < 120) {
+                    let opacity = 1 - (dist / 120);
+                    ctx.strokeStyle = `rgba(108, 99, 255, ${opacity * 0.25})`;
+                    ctx.lineWidth = 1;
+                    ctx.beginPath();
+                    ctx.moveTo(particles[a].x, particles[a].y);
+                    ctx.lineTo(particles[b].x, particles[b].y);
+                    ctx.stroke();
+                }
+            }
+
+            // Connect nearby particles directly to mouse cursor
+            if (mouse.x !== null && mouse.y !== null) {
+                let dx = particles[a].x - mouse.x;
+                let dy = particles[a].y - mouse.y;
+                let dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < mouse.radius) {
+                    let opacity = 1 - (dist / mouse.radius);
+                    ctx.strokeStyle = `rgba(0, 212, 170, ${opacity * 0.4})`;
+                    ctx.lineWidth = 1.2;
+                    ctx.beginPath();
+                    ctx.moveTo(particles[a].x, particles[a].y);
+                    ctx.lineTo(mouse.x, mouse.y);
+                    ctx.stroke();
+                }
+            }
+        }
+    }
+
+    initParticles();
+    window.addEventListener('resize', initParticles);
 
     function animateParticles() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -60,6 +120,7 @@ if (canvas) {
             p.update();
             p.draw();
         });
+        connectParticles();
         requestAnimationFrame(animateParticles);
     }
 
@@ -249,7 +310,7 @@ filterButtons.forEach(button => {
    SCROLL REVEAL
    ============================ */
 const revealElements = document.querySelectorAll(
-    '.section-header, .about-grid, .experience-card, .skill-card, .project-card, .service-card, .cp-card, .contact-grid'
+    '.section-header, .about-grid, .experience-card, .skill-card, .project-card, .cert-card, .service-card, .cp-card, .contact-grid'
 );
 
 revealElements.forEach(el => el.classList.add('reveal'));
@@ -333,7 +394,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 /* ============================
    TILT EFFECT ON CARDS
    ============================ */
-document.querySelectorAll('.project-card, .service-card, .experience-card').forEach(card => {
+document.querySelectorAll('.project-card, .service-card, .experience-card, .cert-card').forEach(card => {
     card.addEventListener('mousemove', (e) => {
         const rect = card.getBoundingClientRect();
         const x = e.clientX - rect.left;
